@@ -32,20 +32,19 @@
         x-ref="header"
         x-data="{
           topBar: document.querySelector('#topBar'),
-          heroSection: document.querySelector('#heroSection'),
           stickyShow:false,
           isSticky: false,
         }"
         @scroll.window="
             if(window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight)){
               isSticky = true;
-              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + this.heroSection.scrollHeight)) stickyShow = true;
+              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + this.topBar.scrollHeight)) stickyShow = true;
             }else{
               isSticky = false;
               if (window.pageYOffset < (this.topBar.scrollHeight)) stickyShow = false;
             }
           "
-        :class="{'transition-all opacity-0 -translate-y-full' : isSticky,
+        :class="{'opacity-0 -translate-y-full' : isSticky,
                 'transition-all sticky duration-500 translate-y-0 opacity-100' : stickyShow
           }"
       >
