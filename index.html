@@ -3,6 +3,12 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./dist/main.css" />
     <script
       defer
@@ -11,8 +17,65 @@
     <title>Bery | Add property</title>
   </head>
   <body>
-    <div x-data="{ label: 'Tailwind CSS & Alpine.js Boilerplate' }">
-      <h1 class="text-4xl text-cyan-400 text-center" x-text="label"></h1>
-    </div>
+    <!-- MAIN CONTAINER -->
+    <main class="h-full">
+      <!-- TOP BAR -->
+      <div
+        class="p-6 text-center text-white text-2xl bg-red-500 w-full shadow-sm"
+        id="topBar"
+      >
+        TOP BAR
+      </div>
+      <!-- STICKY HEADER -->
+      <header
+        class="w-full bg-sky-800 text-white text-2xl text-center p-10 shadow-sm top-0 font-['Karla']"
+        x-ref="header"
+        x-data="{
+          topBar: document.querySelector('#topBar'),
+          heroSection: document.querySelector('#heroSection'),
+          stickyShow:false,
+          isSticky: false,
+        }"
+        @scroll.window="
+            if(window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight)){
+              isSticky = true;
+              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + this.heroSection.scrollHeight)) stickyShow = true;
+            }else{
+              isSticky = false;
+              if (window.pageYOffset < (this.topBar.scrollHeight)) stickyShow = false;
+            }
+          "
+        :class="{'transition-all opacity-0 -translate-y-full' : isSticky,
+                'transition-all sticky duration-500 translate-y-0 opacity-100' : stickyShow
+          }"
+      >
+        Sticky Header
+      </header>
+      <!-- HERO SECTION -->
+      <section
+        class="text-center flex items-center justify-center h-screen w-full text-white bg-cyan-900 text-2xl shadow-sm"
+        id="heroSection"
+      >
+        <h1>HERO SECTION</h1>
+      </section>
+      <!-- SECTION 2 -->
+      <section
+        class="text-center flex items-center justify-center h-screen w-full text-white bg-sky-600 text-2xl shadow-sm"
+      >
+        <h1>SECTION 2</h1>
+      </section>
+      <!-- SECTION 3 -->
+      <section
+        class="text-center flex items-center justify-center h-screen w-full text-white bg-sky-400 text-2xl shadow-sm"
+      >
+        <h1>SECTION 3</h1>
+      </section>
+      <!-- FOOTER -->
+      <footer
+        class="w-full bg-bgLightDark text-white text-2xl text-center p-10 shadow-sm"
+      >
+        FOOTER
+      </footer>
+    </main>
   </body>
 </html>
