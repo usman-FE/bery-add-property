@@ -9,6 +9,10 @@
       href="https://fonts.googleapis.com/css2?family=Karla:wght@200;300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lora:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./dist/main.css" />
     <script
       defer
@@ -20,11 +24,20 @@
     <!-- MAIN CONTAINER -->
     <main class="h-full">
       <!-- TOP BAR -->
-      <div
-        class="p-6 text-center text-white text-2xl bg-red-500 w-full shadow-sm"
-        id="topBar"
-      >
-        TOP BAR
+      <div class="bg-[#0b2c3d] text-white py-3 font-['Lora']" id="topBar">
+        <div class="container mx-auto px-4 flex flex-wrap">
+          <!-- LEFT SIDE -->
+          <div class="w-full sm:w-1/2 text-center sm:text-left mb-1 sm:mb-0">
+            <p class="m-0">
+              Have a question?
+              <a href="#" class="hover:text-[#b39359]">+9985 254 784</a>
+            </p>
+          </div>
+          <!-- RIGHT SIDE -->
+          <div class="w-full sm:w-1/2 text-center sm:text-right">
+            <p class="m-0">Visit us: 9am to 10 pm ( Mon - Fri)</p>
+          </div>
+        </div>
       </div>
       <!-- STICKY HEADER -->
       <header
@@ -38,7 +51,7 @@
         @scroll.window="
             if(window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight)){
               isSticky = true;
-              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + this.topBar.scrollHeight)) stickyShow = true;
+              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + (this.topBar.scrollHeight / 2))) stickyShow = true;
             }else{
               isSticky = false;
               if (window.pageYOffset < (this.topBar.scrollHeight)) stickyShow = false;
