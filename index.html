@@ -41,7 +41,7 @@
       </div>
       <!-- STICKY HEADER -->
       <header
-        class="w-full bg-sky-800 text-white text-2xl text-center p-10 shadow-sm top-0 font-['Karla']"
+        class="relative bg-[#E9F1FF] lg:py-5 z-10 top-0 font-['Karla'] text-base"
         x-ref="header"
         x-data="{
           topBar: document.querySelector('#topBar'),
@@ -49,9 +49,9 @@
           isSticky: false,
         }"
         @scroll.window="
-            if(window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight)){
+            if(window.pageYOffset > (this.topBar.scrollHeight + $el.offsetHeight)){
               isSticky = true;
-              if (window.pageYOffset > (this.topBar.scrollHeight + $el.scrollHeight + (this.topBar.scrollHeight / 2))) stickyShow = true;
+              if (window.pageYOffset > (this.topBar.scrollHeight + $el.offsetHeight + (this.topBar.scrollHeight / 2))) stickyShow = true;
             }else{
               isSticky = false;
               if (window.pageYOffset < (this.topBar.scrollHeight)) stickyShow = false;
@@ -61,7 +61,314 @@
                 'transition-all sticky duration-500 translate-y-0 opacity-100' : stickyShow
           }"
       >
-        Sticky Header
+        <div class="container mx-auto px-4">
+          <div class="flex flex-wrap items-center justify-between">
+            <!-- HEADER LOGO -->
+            <div>
+              <a href="#" class="block w-24 h-12">
+                <img src="images/logo.svg" alt="Logo" class="h-full w-full" />
+              </a>
+            </div>
+            <!-- HEADER NAVIGATION-->
+            <nav class="flex flex-wrap items-center">
+              <!-- DESKTOP NAVIGATION MENU -->
+              <ul
+                class="hidden lg:flex flex-wrap items-center font-['Lora'] text-base xl:text-lg leading-none text-black"
+              >
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- HOME -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >Home</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  >
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all rounded-t-xl"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-t-xl"
+                        >Home 01</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Home 02</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Home 03</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Home 04</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Home 05</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-b-xl"
+                        >Home 06</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- ABOUT -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >About</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  >
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all rounded-t-xl"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-t-xl"
+                        >About 01</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-b-xl"
+                        >About 02</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- PROPERTIES -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >Properties</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  ></ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- PAGES -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >Pages</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  >
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all rounded-t-xl"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-t-xl"
+                        >Service</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Single Service</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Login</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-b-xl"
+                        >Register</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- AGENCY -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >Agency</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  >
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all rounded-t-xl"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-t-xl"
+                        >Agency</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                      >
+                        Create Agency
+                      </a>
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Agent</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Agency Details</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-b-xl"
+                        >Agent Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- BLOG -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]"
+                    >Blog</a
+                  >
+                  <!-- DROPDOWN MENU -->
+                  <ul
+                    class="list-none z-[99] bg-white drop-shadow-md rounded-xl flex flex-wrap flex-col w-56 absolute top-[120%] left-1/2 -translate-x-1/2 transition-all group-hover:top-full invisible group-hover:visible opacity-0 group-hover:opacity-100"
+                  >
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all rounded-t-xl"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-t-xl"
+                        >Blog Grid</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                      >
+                        Agent Grid Right Side Bar
+                      </a>
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px"
+                        >Agent Grid Left Side Bar</a
+                      >
+                    </li>
+                    <!-- DROPDOWN ITEM -->
+                    <li
+                      class="border-b border-dashed border-primary border-opacity-40 last:border-b-0 hover:border-solid transition-all"
+                    >
+                      <a
+                        href="#"
+                        class="font-['Lora'] leading-normal text-sm text-[#0b2c3d] p-2.5 capitalize block transition-all hover:bg-[#0b2c3d] hover:text-white text-center -my-px rounded-b-xl"
+                        >Blog Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- NAVIGATION MENU ITEM -->
+                <!-- CONTACT -->
+                <li class="mr-7 xl:mr-10 relative group py-5">
+                  <a href="#" class="transition-all hover:text-[#b39359]">
+                    Contact
+                  </a>
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
       </header>
       <!-- HERO SECTION -->
       <section
