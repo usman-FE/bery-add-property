@@ -47,6 +47,13 @@
           topBar: document.querySelector('#topBar'),
           stickyShow:false,
           isSticky: false,
+          isNavigationMobileOpen: false,
+          showBodyOverflow(){
+            document.querySelector('body').style.overflow = 'visible'
+          },
+          hideBodyOverflow(){
+            document.querySelector('body').style.overflow = 'hidden'
+          }
         }"
         @scroll.window="
             if(window.pageYOffset > (this.topBar.scrollHeight + $el.offsetHeight)){
@@ -61,6 +68,7 @@
                 'transition-all sticky duration-500 translate-y-0 opacity-100' : stickyShow
           }"
       >
+        <!-- DESKTOP HEADER -->
         <div class="container mx-auto px-4">
           <div class="flex flex-wrap items-center justify-between">
             <!-- HEADER LOGO -->
@@ -502,7 +510,14 @@
                 </li>
                 <!-- HAMBURGER ICON -->
                 <li class="ml-2 sm:ml-5 lg:hidden">
-                  <a href="#" class="flex text-[#016450] hover:text-[#b39359]">
+                  <a
+                    href="#"
+                    class="flex text-[#016450] hover:text-[#b39359]"
+                    @click="
+                      isNavigationMobileOpen = true;
+                      hideBodyOverflow();
+                    "
+                  >
                     <svg
                       width="24"
                       height="24"
@@ -518,6 +533,459 @@
                 </li>
               </ul>
             </nav>
+          </div>
+        </div>
+        <!-- MOBILE NAVIGATION OVERLAY -->
+        <div
+          class="fixed inset-0 bg-black opacity-50 z-50"
+          x-show="isNavigationMobileOpen"
+          @click="
+            isNavigationMobileOpen = false
+            showBodyOverflow();
+          "
+        ></div>
+        <!-- MOBILE NAVIGATION -->
+        <div
+          class="left-0 top-0 fixed font-normal text-sm z-50 h-screen w-full sm:w-[300px] lg:w-[380px] transition-all ease-in-out duration-300 bg-white"
+          x-show="isNavigationMobileOpen"
+          x-transition:enter="transition ease-out duration-300"
+          x-transition:enter-start="opacity-0 -translate-x-full"
+          x-transition:enter-end="opacity-100 translate-x-0"
+          x-transition:leave="transition ease-in duration-300"
+          x-transition:leave-start="opacity-100 translate-x-0"
+          x-transition:leave-end="opacity-0 -translate-x-full"
+        >
+          <div class="py-12 pr-5 h-screen overflow-y-auto">
+            <!-- CLOSE NAVIGATION BUTTON -->
+            <button
+              class="text-[#0b2c3d] text-[25px] w-10 h-10 absolute right-0 top-0 z-[1] pr-4"
+              @click="
+                isNavigationMobileOpen = false;
+                showBodyOverflow();
+              "
+            >
+              x
+            </button>
+            <!-- MOBILE MENU START -->
+            <nav class="mr-5">
+              <ul x-data="{selectedMenu: null}">
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 1 ? null : 1"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Home</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 1}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 1 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 01</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 02</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 03</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 04</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 05</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >home 06</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 2 ? null : 2"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      About</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 2}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 2 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >About</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >About v2</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 3 ? null : 3"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Properties</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 3}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 3 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Properties</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Properties With Sidebar</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Property Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 4 ? null : 4"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Pages</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 4}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 4 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Service</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Single Service</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Contact Us</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Create Agency</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Login</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Register</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 5 ? null : 5"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Agency</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 5}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 5 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Agency</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Create Agency</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Agent</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Agency Details</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Agent Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                    @click="selectedMenu = selectedMenu === 6 ? null : 6"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Blog</a
+                    >
+                    <span class="relative z-10 h-11 w-6">
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black"
+                      ></span>
+                      <span
+                        class="absolute top-1/2 left-0 h-px w-4 bg-black rotate-90 transition-all duration-500"
+                        :class="{'!rotate-0': selectedMenu === 6}"
+                      ></span>
+                    </span>
+                  </button>
+                  <!-- MOBILE SUBMENU -->
+                  <ul
+                    class="w-full capitalize transition-all duration-500 max-h-0 overflow-hidden"
+                    :style="selectedMenu === 6 ? 'max-height: ' + $el.scrollHeight + 'px' : ''"
+                  >
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >blog grid</a
+                      >
+                    </li>
+                    <!-- SUBMENU ITEM -->
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >blog grid left side bar</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >blog grid right side bar</a
+                      >
+                    </li>
+                    <li>
+                      <a
+                        href="#"
+                        class="text-sm py-2 px-[30px] text-black font-light block transition-all hover:text-[#b39359]"
+                        >Blog Details</a
+                      >
+                    </li>
+                  </ul>
+                </li>
+                <!-- MOBILE MENU ITEM -->
+                <li
+                  class="relative block border-b-[#0b2c3d] border-b first:border-t first:border-t-[#0b2c3d]"
+                >
+                  <!-- MENU ITEM BUTTON -->
+                  <button
+                    class="group outline-none border-none bg-none cursor-pointer relative flex w-full justify-between"
+                  >
+                    <a
+                      href="#"
+                      class="block capitalize font-normal text-black group-hover:text-[#b39359] text-base my-2 py-1 px-5"
+                    >
+                      Contact</a
+                    >
+                  </button>
+                </li>
+              </ul>
+            </nav>
+            <!-- MOBILE MENU END -->
+            <div class="px-5 flex flex-wrap mt-3 sm:hidden">
+              <a
+                href="#"
+                class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-[#b39359] before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-[#0b2c3d] after:rounded-md after:transition-all"
+              >
+                Add Property
+              </a>
+            </div>
           </div>
         </div>
       </header>
