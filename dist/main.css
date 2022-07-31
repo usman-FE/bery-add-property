@@ -990,6 +990,10 @@ video {
   background-image: none;
 }
 
+.bg-\[url\(\'\.\.\/images\/properties\.webp\'\)\] {
+  background-image: url('../images/properties.webp');
+}
+
 .bg-contain {
   background-size: contain;
 }
