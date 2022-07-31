@@ -1018,12 +1018,341 @@
         </div>
       </section>
       <!-- HERO SECTION END-->
-      <!-- SECTION 2 -->
-      <section
-        class="text-center flex items-center justify-center h-screen w-full text-white bg-sky-600 text-2xl shadow-sm"
-      >
-        <h1>SECTION 2</h1>
+      <!-- PROPERTY FORM SECTION START -->
+      <section class="pt-20 lg:pt-32">
+        <div class="container mx-auto px-4">
+          <!-- PROPERTY FORM -->
+          <form>
+            <!-- PROPERTY NAME FIELDS -->
+            <div class="grid grid-cols-12 gap-x-8">
+              <!-- FORM TITLE -->
+              <div class="mb-11 col-span-12 md:col-span-8">
+                <label
+                  for="property-title"
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                >
+                  Property Title
+                </label>
+                <input
+                  id="property-title"
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Agency Title"
+                />
+              </div>
+              <!-- FORM PRICE -->
+              <div
+                class="mb-11 col-span-12 md:col-span-4"
+                x-data="
+                  {
+                    priceDropDownOpen: false,
+                    prices: ['Price $', '5000$', '7000$'],
+                    priceSelected: 1,
+                  }
+                "
+                @click.away="priceDropDownOpen = false"
+              >
+                <label
+                  for="price"
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  @click="priceDropDownOpen = !priceDropDownOpen"
+                >
+                  Price
+                </label>
+                <div class="relative">
+                  <div
+                    class="font-light w-full leading-relaxed border border-[#016450] border-opacity-60 rounded-lg p-3.5 h-[60px] flex justify-between cursor-pointer"
+                    :class="{
+                      '!border-[#b39359]' : priceDropDownOpen,
+                      '!border-opacity-60' : priceDropDownOpen,
+                      '!shadow-[0px_6px_15px_rgba(0,0,0,0.1)]': priceDropDownOpen
+                    }"
+                    @click="priceDropDownOpen = !priceDropDownOpen"
+                  >
+                    <span
+                      x-text="priceSelected === 1 ? prices[0] : priceSelected === 2 ? prices[1] : priceSelected === 3 ? prices[2] : ''"
+                    ></span>
+                    <span>▾</span>
+                  </div>
+                  <div
+                    x-show="priceDropDownOpen"
+                    class="absolute w-full block top-full left-0 bg-[#F8F8F8] border border-[#c4c4c4] shadow-sm"
+                  >
+                    <div class="h-full overflow-auto">
+                      <ul>
+                        <li
+                          class="bg-[#01614e] text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="prices[0]"
+                          @click="
+                            priceSelected = 1;
+                            priceDropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="prices[1]"
+                          @click="
+                            priceSelected = 2;
+                            priceDropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="prices[2]"
+                          @click="
+                            priceSelected = 3;
+                            priceDropDownOpen = false;
+                          "
+                        ></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+                <input id="price" hidden />
+              </div>
+              <!-- FORM DESCRIPTION -->
+              <div class="mb-11 col-span-12">
+                <label
+                  for="property-description"
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                >
+                  Property Description
+                </label>
+                <textarea
+                  class="h-[196px] xl:h-[360px] font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-[8px] p-[15px] focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] resize-none"
+                  name="textarea"
+                  id="property-description"
+                  cols="30"
+                  rows="10"
+                  placeholder="Write you text here"
+                ></textarea>
+              </div>
+            </div>
+            <!-- PROPERTY LOCATIONS -->
+            <div class="grid grid-cols-12 gap-x-8">
+              <div class="col-span-12">
+                <label
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  for="location"
+                >
+                  Location
+                </label>
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  id="location"
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Address line 1"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Address line 2"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="City"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Zip Code"
+                />
+              </div>
+            </div>
+            <!-- PROPERTY TYPE/STATUS -->
+            <div class="grid grid-cols-12 gap-x-8">
+              <!-- TYPE -->
+              <div
+                class="mb-11 col-span-12 md:col-span-6"
+                x-data="
+                  {
+                    dropDownOpen: false,
+                    items: ['Duplex Villa', 'Villa', 'Duplex'],
+                    selected: 1,
+                  }
+                "
+                @click.away="dropDownOpen = false"
+              >
+                <label
+                  for="property-type"
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  @click="dropDownOpen = !dropDownOpen"
+                >
+                  Property Type
+                </label>
+                <div class="relative z-40">
+                  <div
+                    class="font-light w-full leading-relaxed border border-[#016450] border-opacity-60 rounded-lg p-3.5 h-[60px] flex justify-between cursor-pointer"
+                    :class="{
+                      '!border-[#b39359]' : dropDownOpen,
+                      '!border-opacity-60' : dropDownOpen,
+                      '!shadow-[0px_6px_15px_rgba(0,0,0,0.1)]': dropDownOpen
+                    }"
+                    @click="dropDownOpen = !dropDownOpen"
+                  >
+                    <span
+                      x-text="selected === 1 ? items[0] : selected === 2 ? items[1] : selected === 3 ? items[2] : ''"
+                    ></span>
+                    <span>▾</span>
+                  </div>
+                  <div
+                    x-show="dropDownOpen"
+                    class="absolute w-full block top-full left-0 bg-[#F8F8F8] border border-[#c4c4c4] shadow-sm"
+                  >
+                    <div class="h-full overflow-auto">
+                      <ul>
+                        <li
+                          class="bg-[#01614e] text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[0]"
+                          @click="
+                            selected = 1;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[1]"
+                          @click="
+                            selected = 2;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[2]"
+                          @click="
+                            selected = 3;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!-- STATUS -->
+              <div
+                class="mb-11 col-span-12 md:col-span-6"
+                x-data="
+                  {
+                    dropDownOpen: false,
+                    items: ['Sale', 'High price', 'Low price'],
+                    selected: 1,
+                  }
+                "
+                @click.away="dropDownOpen = false"
+              >
+                <label
+                  for="property-status"
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  @click="dropDownOpen = !dropDownOpen"
+                >
+                  Property Status
+                </label>
+                <div class="relative z-30">
+                  <div
+                    class="font-light w-full leading-relaxed border border-[#016450] border-opacity-60 rounded-lg p-3.5 h-[60px] flex justify-between cursor-pointer"
+                    :class="{
+                      '!border-[#b39359]' : dropDownOpen,
+                      '!border-opacity-60' : dropDownOpen,
+                      '!shadow-[0px_6px_15px_rgba(0,0,0,0.1)]': dropDownOpen
+                    }"
+                    @click="dropDownOpen = !dropDownOpen"
+                  >
+                    <span
+                      x-text="selected === 1 ? items[0] : selected === 2 ? items[1] : selected === 3 ? items[2] : ''"
+                    ></span>
+                    <span>▾</span>
+                  </div>
+                  <div
+                    x-show="dropDownOpen"
+                    class="absolute w-full block top-full left-0 bg-[#F8F8F8] border border-[#c4c4c4] shadow-sm"
+                  >
+                    <div class="h-full overflow-auto">
+                      <ul>
+                        <li
+                          class="bg-[#01614e] text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[0]"
+                          @click="
+                            selected = 1;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[1]"
+                          @click="
+                            selected = 2;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                        <li
+                          class="text-[#666] hover:bg-[#01614e] hover:text-white block p-2.5 cursor-pointer text-xs text-left"
+                          x-text="items[2]"
+                          @click="
+                            selected = 3;
+                            dropDownOpen = false;
+                          "
+                        ></li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PROPERTY LOCATIONS -->
+            <div class="grid grid-cols-12 gap-x-8">
+              <div class="col-span-12">
+                <label
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  for="property-info"
+                >
+                  Property Info
+                </label>
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  id="property-info"
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Area(sqft)"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Number of Bedroom"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Number of Bathroom"
+                />
+              </div>
+              <div class="mb-11 col-span-12 md:col-span-6">
+                <input
+                  class="font-light w-full leading-relaxed placeholder:opacity-100 placeholder:text-body border border-[#1B2D40] border-opacity-60 rounded-lg p-3.5 focus:border-[#b39359] focus:border-opacity-60 focus:outline-none focus:drop-shadow-[0px_6px_15px_rgba(0,0,0,0.1)] h-[60px]"
+                  type="text"
+                  placeholder="Number of Garage"
+                />
+              </div>
+            </div>
+          </form>
+        </div>
       </section>
+      <!-- PROPERTY FORM SECTION END -->
       <!-- SECTION 3 -->
       <section
         class="text-center flex items-center justify-center h-screen w-full text-white bg-sky-400 text-2xl shadow-sm"
