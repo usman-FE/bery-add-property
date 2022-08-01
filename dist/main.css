@@ -2070,6 +2070,11 @@ video {
     padding-bottom: 1.25rem;
   }
 
+  .lg\:\!py-3 {
+    padding-top: 0.75rem !important;
+    padding-bottom: 0.75rem !important;
+  }
+
   .lg\:pt-32 {
     padding-top: 8rem;
   }
