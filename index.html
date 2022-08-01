@@ -14,6 +14,20 @@
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./dist/main.css" />
+    <!-- LEAFLET MAP'S CSS -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.8.0/dist/leaflet.css"
+      integrity="sha512-hoalWLoI8r4UszCkZ5kL8vayOGVae1oxXe/2A4AO6J9+580uKHDO3JdHb7NzwwzK5xr/Fs0W40kiNHxM9vyTtQ=="
+      crossorigin=""
+    />
+    <!-- Leaflet's JS -->
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.8.0/dist/leaflet.js"
+      integrity="sha512-BB3hKbKWOc9Ez/TAwyWxNXeoV9c1v6FIeYiBieIWkpLjauysF18NzgR1MBNBXf8/KABdlkX68nAhlwcDFLGPCQ=="
+      crossorigin=""
+    ></script>
     <script
       defer
       src="https://unpkg.com/alpinejs@3.10.2/dist/cdn.min.js"
@@ -1309,7 +1323,7 @@
                 </div>
               </div>
             </div>
-            <!-- PROPERTY LOCATIONS -->
+            <!-- PROPERTY INFO -->
             <div class="grid grid-cols-12 gap-x-8">
               <div class="col-span-12">
                 <label
@@ -1347,6 +1361,292 @@
                   type="text"
                   placeholder="Number of Garage"
                 />
+              </div>
+            </div>
+            <!-- PROPERTY IMAGES & VIDEOS -->
+            <div class="grid grid-cols-12 gap-x-8">
+              <!-- ADD IMAGES -->
+              <div class="mb-11 col-span-12">
+                <label
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  for="property-info"
+                >
+                  Add Images
+                </label>
+                <div
+                  class="py-9 px-4 flex flex-wrap items-center justify-center text-center border border-[#1B2D40] border-opacity-60 rounded-xl"
+                >
+                  <div class="relative">
+                    <input
+                      class="absolute inset-0 z-[0] opacity-0 w-full"
+                      type="file"
+                      name="Images"
+                      id="Images"
+                    />
+                    <label
+                      for="Images"
+                      class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-[#b39359] before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[30px] py-[12px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-[#0b2c3d] after:rounded-md after:transition-all flex flex-wrap items-center justify-center cursor-pointer"
+                    >
+                      <svg
+                        class="mr-[5px]"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 22 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M21.5853 8.39666C21.4868 8.25357 21.3542 8.1373 21.1995 8.05834C21.0448 7.97938 20.8729 7.94023 20.6992 7.94444H6.82698C6.53428 7.95684 6.25076 8.05025 6.00799 8.21425C5.76523 8.37825 5.57275 8.60641 5.45198 8.87333C5.44998 8.90181 5.44998 8.9304 5.45198 8.95888L3.66753 15.2778V4.27777H7.63365L9.22865 6.47166C9.28554 6.54951 9.36004 6.6128 9.44607 6.65635C9.53211 6.69989 9.62722 6.72246 9.72365 6.72221H19.5564C19.5564 6.39806 19.4277 6.08718 19.1984 5.85797C18.9692 5.62876 18.6584 5.49999 18.3342 5.49999H10.0353L8.62365 3.55666C8.50987 3.40095 8.36085 3.27438 8.18879 3.18728C8.01673 3.10019 7.8265 3.05505 7.63365 3.05555H3.66753C3.34338 3.05555 3.0325 3.18432 2.80329 3.41353C2.57408 3.64274 2.44531 3.95361 2.44531 4.27777V18.1439C2.45485 18.3638 2.55062 18.5711 2.71189 18.721C2.87316 18.8708 3.08695 18.9511 3.30698 18.9444H18.542C18.6783 18.9499 18.8126 18.9095 18.9234 18.8297C19.0341 18.75 19.115 18.6355 19.1531 18.5044L21.7136 9.27666C21.7614 9.12999 21.7747 8.97428 21.7524 8.82164C21.7302 8.66901 21.673 8.52357 21.5853 8.39666ZM18.0592 17.7222H4.21753L6.58865 9.28277C6.64651 9.20822 6.72869 9.15632 6.82087 9.1361H20.467L18.0592 17.7222Z"
+                          fill="#FAFAFA"
+                        ></path>
+                      </svg>
+                      Add Images</label
+                    >
+                  </div>
+                </div>
+              </div>
+              <!-- ADD VIDEOS -->
+              <div class="mb-11 col-span-12">
+                <label
+                  class="mb-5 font-['Lora'] text-xl font-medium leading-none block text-[#0b2c3d]"
+                  for="property-info"
+                >
+                  Add Videos
+                </label>
+                <div
+                  class="py-9 px-4 flex flex-wrap items-center justify-center text-center border border-[#1B2D40] border-opacity-60 rounded-xl"
+                >
+                  <div class="relative">
+                    <input
+                      class="absolute inset-0 z-[0] opacity-0 w-full"
+                      type="file"
+                      name="Videos"
+                      id="Videos"
+                    />
+                    <label
+                      for="Videos"
+                      class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-[#b39359] before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[30px] py-[12px] capitalize font-medium text-white text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-[#0b2c3d] after:rounded-md after:transition-all flex flex-wrap items-center justify-center cursor-pointer"
+                    >
+                      <svg
+                        class="mr-[5px]"
+                        width="22"
+                        height="22"
+                        viewBox="0 0 22 22"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                      >
+                        <path
+                          d="M21.5853 8.39666C21.4868 8.25357 21.3542 8.1373 21.1995 8.05834C21.0448 7.97938 20.8729 7.94023 20.6992 7.94444H6.82698C6.53428 7.95684 6.25076 8.05025 6.00799 8.21425C5.76523 8.37825 5.57275 8.60641 5.45198 8.87333C5.44998 8.90181 5.44998 8.9304 5.45198 8.95888L3.66753 15.2778V4.27777H7.63365L9.22865 6.47166C9.28554 6.54951 9.36004 6.6128 9.44607 6.65635C9.53211 6.69989 9.62722 6.72246 9.72365 6.72221H19.5564C19.5564 6.39806 19.4277 6.08718 19.1984 5.85797C18.9692 5.62876 18.6584 5.49999 18.3342 5.49999H10.0353L8.62365 3.55666C8.50987 3.40095 8.36085 3.27438 8.18879 3.18728C8.01673 3.10019 7.8265 3.05505 7.63365 3.05555H3.66753C3.34338 3.05555 3.0325 3.18432 2.80329 3.41353C2.57408 3.64274 2.44531 3.95361 2.44531 4.27777V18.1439C2.45485 18.3638 2.55062 18.5711 2.71189 18.721C2.87316 18.8708 3.08695 18.9511 3.30698 18.9444H18.542C18.6783 18.9499 18.8126 18.9095 18.9234 18.8297C19.0341 18.75 19.115 18.6355 19.1531 18.5044L21.7136 9.27666C21.7614 9.12999 21.7747 8.97428 21.7524 8.82164C21.7302 8.66901 21.673 8.52357 21.5853 8.39666ZM18.0592 17.7222H4.21753L6.58865 9.28277C6.64651 9.20822 6.72869 9.15632 6.82087 9.1361H20.467L18.0592 17.7222Z"
+                          fill="#FAFAFA"
+                        ></path>
+                      </svg>
+                      Add Videos</label
+                    >
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- PROPERTY AMINITIES & MAP -->
+            <div class="grid grid-cols-12 gap-x-8 mb-11">
+              <!-- PROPERTY AMINITIES -->
+              <div class="col-span-12 md:col-span-6 mb-11">
+                <h3
+                  class="mb-10 font-['Lora'] leading-none text-primary text-2xl font-medium"
+                >
+                  Property Aminities
+                </h3>
+                <!-- AMINITIES CHECKBOXES -->
+                <ul
+                  class="mb-[-30px] list-none text-[15px] lg:text-[16px] flex flex-wrap"
+                >
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox"
+                      name="checkbox"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Air Conditioning</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox2"
+                      name="checkbox2"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox2"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Bedding</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox3"
+                      name="checkbox3"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox3"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Balcony</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox4"
+                      name="checkbox4"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox4"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >ACable TV</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox5"
+                      name="checkbox5"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox5"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Oven</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox6"
+                      name="checkbox6"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox6"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Internet</label
+                    >
+                  </li>
+
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox7"
+                      name="checkbox7"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox7"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Parking</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox8"
+                      name="checkbox8"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox8"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Lift</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox9"
+                      name="checkbox9"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox9"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Pool</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox10"
+                      name="checkbox10"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox10"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Dishwasher</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox11"
+                      name="checkbox11"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox11"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Washing Machine</label
+                    >
+                  </li>
+                  <li class="mb-[30px] capitalize w-1/2">
+                    <input
+                      type="checkbox"
+                      id="checkbox12"
+                      name="checkbox12"
+                      class="peer absolute left-[-9999px]"
+                    />
+                    <label
+                      for="checkbox12"
+                      class="relative pl-7 before:absolute before:left-0 before:top-[3px] before:w-4 before:h-4 before:border before:border-[#01614e] before:rounded-full after:absolute after:top-[6px] after:left-[3px] after:w-2.5 after:h-2.5 after:bg-[#01614e] after:rounded-full after:opacity-0 after:transition-all peer-checked:after:opacity-100"
+                      >Toaster</label
+                    >
+                  </li>
+                </ul>
+                <!-- ADD PROPERTY BUTTON -->
+                <div class="mt-12 lg:mt-20">
+                  <button
+                    type="button"
+                    class="before:rounded-md before:block before:absolute before:left-auto before:right-0 before:inset-y-0 before:-z-[1] before:bg-[#b39359] before:w-0 hover:before:w-full hover:before:left-0 hover:before:right-auto before:transition-all leading-none px-[20px] py-[15px] capitalize font-medium text-white hidden sm:block text-[14px] xl:text-[16px] relative after:block after:absolute after:inset-0 after:-z-[2] after:bg-[#0b2c3d] after:rounded-md after:transition-all outline-none"
+                  >
+                    Add Property
+                  </button>
+                </div>
+              </div>
+              <!-- PROPERTY MAP -->
+              <div class="col-span-12 md:col-span-6 mb-11">
+                <h3
+                  class="mb-10 font-['Lora'] leading-none text-primary text-2xl font-medium"
+                >
+                  Place on Map
+                </h3>
+                <div
+                  class="h-[350px] rounded-md overflow-hidden z-0 relative"
+                  x-data="{map: ''}"
+                  x-init="
+                    map = L.map('map').setView([51.505, -0.09], 13);
+                    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                        maxZoom: 19,
+                        attribution: '© OpenStreetMap'
+                    }).addTo(map);
+                  "
+                >
+                  <div id="map" class="h-full w-full"></div>
+                </div>
               </div>
             </div>
           </form>
