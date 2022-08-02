@@ -779,14 +779,6 @@ video {
   margin-top: 2.5rem;
 }
 
-.mb-2\.5 {
-  margin-bottom: 0.625rem;
-}
-
-.mb-2 {
-  margin-bottom: 0.5rem;
-}
-
 .block {
   display: block;
 }
@@ -837,10 +829,6 @@ video {
 
 .h-\[196px\] {
   height: 196px;
-}
-
-.h-\[300px\] {
-  height: 300px;
 }
 
 .max-h-0 {
@@ -1029,6 +1017,11 @@ video {
   border-style: none;
 }
 
+.border-\[\#0b2c3d\] {
+  --tw-border-opacity: 1;
+  border-color: rgb(11 44 61 / var(--tw-border-opacity));
+}
+
 .border-\[\#1B2D40\] {
   --tw-border-opacity: 1;
   border-color: rgb(27 45 64 / var(--tw-border-opacity));
@@ -1047,11 +1040,6 @@ video {
 .border-\[\#c4c4c4\] {
   --tw-border-opacity: 1;
   border-color: rgb(196 196 196 / var(--tw-border-opacity));
-}
-
-.border-\[\#0b2c3d\] {
-  --tw-border-opacity: 1;
-  border-color: rgb(11 44 61 / var(--tw-border-opacity));
 }
 
 .border-\[\#b39359\] {
@@ -1109,16 +1097,6 @@ video {
 .bg-\[\#01614e\] {
   --tw-bg-opacity: 1;
   background-color: rgb(1 97 78 / var(--tw-bg-opacity));
-}
-
-.bg-sky-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(56 189 248 / var(--tw-bg-opacity));
-}
-
-.bg-slate-400 {
-  --tw-bg-opacity: 1;
-  background-color: rgb(148 163 184 / var(--tw-bg-opacity));
 }
 
 .bg-transparent {
@@ -1270,16 +1248,6 @@ video {
   padding-bottom: 17px;
 }
 
-.py-20 {
-  padding-top: 5rem;
-  padding-bottom: 5rem;
-}
-
-.\!py-3 {
-  padding-top: 0.75rem !important;
-  padding-bottom: 0.75rem !important;
-}
-
 .pr-5 {
   padding-right: 1.25rem;
 }
@@ -1422,10 +1390,6 @@ video {
   letter-spacing: 0.02em;
 }
 
-.tracking-wide {
-  letter-spacing: 0.025em;
-}
-
 .text-white {
   --tw-text-opacity: 1;
   color: rgb(255 255 255 / var(--tw-text-opacity));
@@ -1454,16 +1418,6 @@ video {
 .text-\[\#666\] {
   --tw-text-opacity: 1;
   color: rgb(102 102 102 / var(--tw-text-opacity));
-}
-
-.text-green-400 {
-  --tw-text-opacity: 1;
-  color: rgb(74 222 128 / var(--tw-text-opacity));
-}
-
-.text-red-600 {
-  --tw-text-opacity: 1;
-  color: rgb(220 38 38 / var(--tw-text-opacity));
 }
 
 .text-\[\#b39359\] {
@@ -1754,12 +1708,6 @@ video {
   background-color: rgb(11 44 61 / var(--tw-bg-opacity));
 }
 
-.after\:bg-\[\#016450\]::after {
-  content: var(--tw-content);
-  --tw-bg-opacity: 1;
-  background-color: rgb(1 100 80 / var(--tw-bg-opacity));
-}
-
 .after\:bg-\[\#01614e\]::after {
   content: var(--tw-content);
   --tw-bg-opacity: 1;
@@ -1978,11 +1926,6 @@ video {
   .sm\:text-\[30px\] {
     font-size: 30px;
   }
-
-  .sm\:text-3xl {
-    font-size: 1.875rem;
-    line-height: 2.25rem;
-  }
 }
 
 @media (min-width: 768px) {
@@ -2122,11 +2065,6 @@ video {
 
   .xl\:text-\[36px\] {
     font-size: 36px;
-  }
-
-  .xl\:text-4xl {
-    font-size: 2.25rem;
-    line-height: 2.5rem;
   }
 }
 
