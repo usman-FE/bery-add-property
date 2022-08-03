@@ -1,7 +1,7 @@
 {
-  "name": "tailwindcss-alpine-boilerplate",
+  "name": "bery-add-property",
   "version": "1.0.0",
-  "description": "tailwindcss-alpine-boilerplate",
+  "description": "Bery | Add property page",
   "main": "index.html",
   "scripts": {
     "build": "npx tailwindcss -i ./src/style.css -o ./dist/main.css",
