@@ -1,5 +1,5 @@
 /*
-! tailwindcss v3.1.5 | MIT License | https://tailwindcss.com
+! tailwindcss v3.1.8 | MIT License | https://tailwindcss.com
 */
 
 /*
@@ -355,13 +355,6 @@ input::-moz-placeholder, textarea::-moz-placeholder {
   /* 2 */
 }
 
-input:-ms-input-placeholder, textarea:-ms-input-placeholder {
-  opacity: 1;
-  /* 1 */
-  color: #9ca3af;
-  /* 2 */
-}
-
 input::placeholder,
 textarea::placeholder {
   opacity: 1;
@@ -694,6 +687,10 @@ video {
 
 .z-0 {
   z-index: 0;
+}
+
+.z-\[9999\] {
+  z-index: 9999;
 }
 
 .col-span-12 {
@@ -1251,10 +1248,6 @@ video {
   padding: 15px;
 }
 
-.p-10 {
-  padding: 2.5rem;
-}
-
 .py-3 {
   padding-top: 0.75rem;
   padding-bottom: 0.75rem;
@@ -1598,27 +1591,7 @@ video {
   transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
 }
 
-.placeholder\:text-\[\#E2E2E2\]::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(226 226 226 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-\[\#E2E2E2\]:-ms-input-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(226 226 226 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-\[\#E2E2E2\]::placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(226 226 226 / var(--tw-text-opacity));
-}
-
 .placeholder\:text-\[\#494949\]::-moz-placeholder {
-  --tw-text-opacity: 1;
-  color: rgb(73 73 73 / var(--tw-text-opacity));
-}
-
-.placeholder\:text-\[\#494949\]:-ms-input-placeholder {
   --tw-text-opacity: 1;
   color: rgb(73 73 73 / var(--tw-text-opacity));
 }
@@ -1628,11 +1601,17 @@ video {
   color: rgb(73 73 73 / var(--tw-text-opacity));
 }
 
-.placeholder\:opacity-100::-moz-placeholder {
-  opacity: 1;
+.placeholder\:text-\[\#E2E2E2\]::-moz-placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(226 226 226 / var(--tw-text-opacity));
 }
 
-.placeholder\:opacity-100:-ms-input-placeholder {
+.placeholder\:text-\[\#E2E2E2\]::placeholder {
+  --tw-text-opacity: 1;
+  color: rgb(226 226 226 / var(--tw-text-opacity));
+}
+
+.placeholder\:opacity-100::-moz-placeholder {
   opacity: 1;
 }
 
